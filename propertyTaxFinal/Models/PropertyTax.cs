@@ -34,43 +34,15 @@ namespace propertyTaxFinal.Models
             get
             {
                 string band = " ";
-                if (amountIn < 100000)
+                for (int i = 50000; i < 500000; i = (i + 50000))
                 {
-                    band = "Between 0 and 100,000";
+                    if (amountIn <= i)
+                    {
+                        band = "Between " + (i - 50000) + " and " + i + "";
+                        return band;
+                    }
                 }
-                else if (amountIn < 150000)
-                {
-                    band = "Between 100001 and 150000";
-                }
-                else if (amountIn < 200000)
-                {
-                    band = "Between 150001 and 200000";
-                }
-                else if (amountIn < 250000)
-                {
-                    band = "Between 200001 and 250000";
-                }
-                else if (amountIn < 300000)
-                {
-                    band = "Between 250001 and 300000";
-                }
-                else if (amountIn < 350000)
-                {
-                    band = "Between 300001 and 350000";
-                }
-                else if (amountIn < 400000)
-                {
-                    band = "Between 350001 and 400000";
-                }
-                else if (amountIn < 450000)
-                {
-                    band = "Between 400001 and 450000";
-                }
-                else if (amountIn <= 500000)
-                {
-                    band = "Between 450001 and 500000";
-                }
-                return band;
+                return "ERROR";
             }
         }
 
@@ -84,43 +56,19 @@ namespace propertyTaxFinal.Models
 
                 double result = (Double.Parse(System.Configuration.ConfigurationManager.AppSettings["TaxRate"]) / 100);
                 double median = 0;
-                if (amountIn <= 100000)
+                int min, max;
+
+                for (int i = 50000; i < 500000; i = (i + 50000))
                 {
-                    median = 50000 * (result);
+                    if (amountIn <= i)
+                    {
+                        min = i - 50000;
+                        max = i;
+                        median = (min + (min - max)/2) * (result);
+                        return median;
+                    }
                 }
-                else if (amountIn <= 150000)
-                {
-                    median = 125000 * (result);
-                }
-                else if (amountIn <= 200000)
-                {
-                    median = 175000 * (result);
-                }
-                else if (amountIn <= 250000)
-                {
-                    median = 225000 * (result);
-                }
-                else if (amountIn <= 300000)
-                {
-                    median = 275000 * (result);
-                }
-                else if (amountIn < 350000)
-                {
-                    median = 325000 * (result);
-                }
-                else if (amountIn <= 400000)
-                {
-                    median = 375000 * (result);
-                }
-                else if (amountIn <= 450000)
-                {
-                    median = 425000 * (result);
-                }
-                else if (amountIn <= 500000)
-                {
-                    median = 475000 * (result);
-                }
-                return (median);
+                return 0.0;
             }
         }
     }
