@@ -1,0 +1,45 @@
+﻿@model propertyTaxFinal.Models.PropertyTax
+
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<h2>Confirm</h2>
+
+<div>
+    <h4>PropertyTax</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.amountIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amountIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyValueBand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyValueBand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Calculate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Calculate)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.title)
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to Calculate", "Calculate")
+</p>
